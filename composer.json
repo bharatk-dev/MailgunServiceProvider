@@ -1,5 +1,5 @@
 {
-    "name": " bharatk/mailgunserviceprovider",
+    "name": "bharatk/mailgunserviceprovider",
     "description": "Mailgun Service Provider for Silex",
     "type": "library",
     "require": {
