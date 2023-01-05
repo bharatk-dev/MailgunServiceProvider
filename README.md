@@ -19,7 +19,7 @@ Requirements
 Installation
 ------------ 
 ```sh
-$ composer require achrafsoltani/mailgunserviceprovider
+$ composer require bharatk/mailgunserviceprovider
 ```
 Setup
 ------------
