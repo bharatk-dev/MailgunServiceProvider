@@ -13,8 +13,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Achraf Soltani",
-            "email": "achraf.soltani@gmail.com"
+            "name": "Dev team",
         }
     ],
     "autoload": {
