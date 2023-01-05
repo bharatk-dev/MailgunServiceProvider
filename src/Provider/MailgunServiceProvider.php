@@ -14,9 +14,11 @@
 
 namespace AchrafSoltani\Provider;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use AchrafSoltani\Mailgun\Client;
+use Mailgun\HttpClient\HttpClientConfigurator;
+use Mailgun\Hydrator\ArrayHydrator;
 
 /**
  * Class MailgunServiceProvider
@@ -24,15 +26,19 @@ use AchrafSoltani\Mailgun\Client;
  */
 class MailgunServiceProvider implements ServiceProviderInterface
 {
-    public function register(Application $app)
+    public function register(Container $app)
     {
         
-        $app['mailgun'] = function () use ($app) 
+         $app['mailgun'] = $app->protect(function () use ($app)
         {
-            $client = new Client($app['mailgun.api_key']); 
+            $configurator = new HttpClientConfigurator();
+            $configurator->setApiKey($app['mailgun.api_key']);
+            $configurator->setDebug($app['mailgun.debug']);
+
+            $client = new Client($configurator, new ArrayHydrator());
             $client->setWorkingDomain($app['mailgun.domain']);
             return $client;
-        };
+        });
     }
     
     public function boot(Application $app)
