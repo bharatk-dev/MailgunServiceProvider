@@ -40,9 +40,4 @@ class MailgunServiceProvider implements ServiceProviderInterface
             return $client;
         });
     }
-    
-    public function boot(Application $app)
-    {
-        
-    }
 }
